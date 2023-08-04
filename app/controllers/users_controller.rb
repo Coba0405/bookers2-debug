@@ -1,5 +1,5 @@
 class UsersController < ApplicationController
-  before_action :ensure_correct_user, only: [:update]
+  before_action :ensure_correct_user, only: [:edit, :update]
 
   def show
     @user = User.find(params[:id])
@@ -8,6 +8,7 @@ class UsersController < ApplicationController
   end
 
   def index
+    @user = current_user
     @users = User.all
     @book = Book.new
   end
@@ -18,7 +19,7 @@ class UsersController < ApplicationController
 
   def update
     if @user.update(user_params)
-      redirect_to users_path(@user.id), notice: "You have updated user successfully."
+      redirect_to user_path(@user.id), notice: "You have updated user successfully."
     else
       render :edit
     end
