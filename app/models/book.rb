@@ -1,6 +1,9 @@
 class Book < ApplicationRecord
+  def favorited?(user)
+    favorites.where(user_id: user.id).exists?
+  end
    belongs_to :user
-  # has_many :user
+   has_many :favorites, dependent: :destroy
   validates :title,presence:true
   validates :body,presence:true,length:{maximum:200}
 end
