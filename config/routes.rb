@@ -7,8 +7,9 @@ Rails.application.routes.draw do
 
   resources :books do
     resource :favorites, only: [:create, :destroy]
+    resource :comments, only: [:create, :destroy]
   end
-  resources :books, only: [:index,:show,:edit,:create,:destroy,:update]
+  # resources :books, only: [:index,:show,:edit,:create,:destroy,:update]
   resources :users, only: [:index,:show,:edit,:update]
 end
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html

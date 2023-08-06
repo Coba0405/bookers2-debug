@@ -29,6 +29,14 @@
             <%= book.favorites.count %>
             <% end %>
           <% end %>
+            <%#= link_to book_favorites_path(book.id), method: :delete do %>
+              <!--<span style="color: red;">❤︎</span>-->
+            <%# end %>
+          <%# else %>
+            <%#= link_to book_favorites_path(book.id), method: :post do %>
+              <!--<span style="color: black;">︎♡</span>-->
+            <%# end %>
+          <%# end %>
         </td>
       </tr>
     <% end %>

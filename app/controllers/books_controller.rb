@@ -1,9 +1,13 @@
 class BooksController < ApplicationController
+  before_action :authenticate_user!, only: [:show, :create]
 
   def show
     @booknew = Book.new
     @book = Book.find(params[:id])
     @user = @book.user
+    @comments = @book.comments #投稿詳細に関連付けてあるコメントを全取得
+    @comment = Comment.new #投稿詳細画面でコメントの投稿を行うので、formのパラメータ用にCommentオブジェクトを取得
+
   end
 
   def index
@@ -12,7 +16,7 @@ class BooksController < ApplicationController
   end
 
   def create
-    @book = Book.new(book_params)
+    @book = current_user.book.new(book_params)
     @book.user_id = current_user.id
     if @book.save
       redirect_to book_path(@book), notice: "You have created book successfully."
@@ -47,6 +51,6 @@ class BooksController < ApplicationController
   private
 
   def book_params
-    params.require(:book).permit(:title, :body)
+    params.require(:book).permit(:title, :body, :book_content)
   end
 end
