@@ -3,7 +3,7 @@ class FavoritesController < ApplicationController
   def create
     @book_favorite = Favorite.new(user_id: current_user.id, book_id: params[:book_id])
     @book_favorite.save
-    redirect_to request.referer
+    redirect_to requ＃est.referer
   end
   
   def destroy

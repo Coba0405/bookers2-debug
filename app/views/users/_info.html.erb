@@ -1,5 +1,5 @@
 <table class='table'>
-  <tr><%= image_tag user.get_profile_image, size:'100x100' %></tr>
+  <tr><%= image_tag user.get_profile_image(100,100) %></tr>
   <tr>
 	  <th>name</th>
 	  <th><%= user.name %></th>
@@ -12,7 +12,7 @@
     <th>Follows</th>
     <th>
       <%= link_to follows_user_path(user) do %>
-        <h6><%= user.followeds.count %></h6>
+        <h6><%= user.followers.count %></h6>
       <% end %>
     </th>
   </tr>
