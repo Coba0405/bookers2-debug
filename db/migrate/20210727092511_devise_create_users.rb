@@ -34,11 +34,11 @@ class DeviseCreateUsers < ActiveRecord::Migration[6.1]
 
       t.string :name
       t.text :introduction
-      t.string :title
+      # t.string :title
 
       t.timestamps null: false
-      add_index :users, :email, unique: true
-      add_index :users, :reset_password_token, unique: true
+      # add_index :users, :email, unique: true
+      # add_index :users, :reset_password_token, unique: true
     end
 
     add_index :users, :email,                unique: true
