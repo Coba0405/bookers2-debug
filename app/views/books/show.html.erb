@@ -27,12 +27,13 @@
           <% end %>
         </tr>
       </table>
-      <%= render 'comments/index', book: @book %>
-      
-      <%= form_with model: [@book, @comment] do |f| %>
+      <div id="comment_index">
+        <%= render 'comments/index', book: @book %>
+      </div>
+      <%= form_with model: [@book, @comment], local: false do |f| %>
         <%= f.text_area :comment_content %>
         <%= f.submit '投稿' %>
-      <% end%>
+      <% end %>
     </div>
   </div>
 </div>

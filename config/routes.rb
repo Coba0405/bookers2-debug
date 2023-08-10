@@ -9,7 +9,7 @@ Rails.application.routes.draw do
 
   resources :books do
     resource :favorites, only: [:create, :destroy]
-    resource :comments, only: [:create, :destroy]
+    resources :comments, only: [:create, :destroy]
   end
   # resources :books, only: [:index,:show,:edit,:create,:destroy,:update]
   resources :users, only: [:index,:show,:edit,:update] do
