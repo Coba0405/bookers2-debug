@@ -1,0 +1,18 @@
+<table>
+<% book.comments.each do |comment| %>
+  <tr>
+    <td>
+      <%= image_tag comment.user.get_profile_image(50,50)  %><%= comment.user.name %>
+    </td>
+    <td>
+      <%= comment.comment_content %>
+    </td>
+  <% if comment.user == current_user %>
+    <td>
+      <%= link_to 'Destroy', book_comments_path(book,comment), method: :delete, class: "btn btn-sm btn-danger"%>
+    </td>
+  <% end %>
+
+  </tr>
+<% end %>
+</table>

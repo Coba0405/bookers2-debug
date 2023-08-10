@@ -7,6 +7,13 @@ class CommentsController < ApplicationController
     @comment.save
     redirect_to request.referer
   end
+  
+  def destroy
+    # @comment = Comment.find_by(params[:id])
+    @comment = Comment.find_by(id: params[:id], book_id:params[:book_id])
+    @comment.destroy
+    redirect_to request.referer
+  end
 
 private
   def comment_params
