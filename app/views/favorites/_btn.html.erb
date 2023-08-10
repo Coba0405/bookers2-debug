@@ -1,0 +1,13 @@
+<!--いいね!ボタンの非同期通信viewファイル-->
+<% if book.favorited_by?(current_user) %>
+  <%= link_to book_favorites_path(book.id), method: :delete, remote: true do %>
+  <!--link_to内の「remote: true」でjavascriptのリクエストがfavoritesコントローラーに送られる-->
+    <i class="fas fa-heart" aria-hidden="true" style="color: red;"></i>
+    <%= book.favorites.count %>
+  <% end %>
+<% else %>
+  <%= link_to book_favorites_path(book.id), method: :post, remote: true do %>
+  <i class="fas fa-heart" aria-hidden="true"></i>
+  <%= book.favorites.count %>
+  <% end %>
+<% end %>
